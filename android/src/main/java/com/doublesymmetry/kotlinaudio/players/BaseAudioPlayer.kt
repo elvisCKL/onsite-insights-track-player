@@ -78,8 +78,14 @@ abstract class BaseAudioPlayer internal constructor(
                 if (!options.handleAudioFocus) {
                     when (value) {
                         AudioPlayerState.IDLE,
-                        AudioPlayerState.ERROR -> focusManager.abandonAudioFocusIfHeld()
-                        AudioPlayerState.READY -> focusManager.requestAudioFocus()
+                        AudioPlayerState.ERROR,
+                        AudioPlayerState.ENDED,
+                        AudioPlayerState.STOPPED -> {
+                            focusManager.abandonAudioFocusIfHeld()
+                        }
+                        AudioPlayerState.READY -> {
+                            focusManager.requestAudioFocus()
+                        }
                         else -> {}
                     }
                 }
@@ -536,7 +542,7 @@ abstract class BaseAudioPlayer internal constructor(
 
             val manager = ContextCompat.getSystemService(context, AudioManager::class.java)
 
-            focus = AudioFocusRequestCompat.Builder(AudioManagerCompat.AUDIOFOCUS_GAIN)
+            focus = AudioFocusRequestCompat.Builder(AudioManagerCompat.AUDIOFOCUS_GAIN_TRANSIENT)
                 .setOnAudioFocusChangeListener(
                     { focusChange ->
                         Timber.d("Audio focus changed")
