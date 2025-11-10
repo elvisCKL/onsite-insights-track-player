@@ -1,5 +1,15 @@
 # Changelog
 
+## [Unreleased] (2025-11-07)
+
+### Bug Fixes
+
+* **android:** Fix audio focus not being released when playback stops or ends ([838f3ab](https://github.com/doublesymmetry/react-native-track-player/commit/838f3abea837b2f24a81bc3156f083d87594aa6d))
+
+  Changed audio focus request type from `AUDIOFOCUS_GAIN` to `AUDIOFOCUS_GAIN_TRANSIENT` to allow automatic release when playback ends. Also added `AudioPlayerState.ENDED` and `AudioPlayerState.STOPPED` to the states that trigger audio focus abandonment, ensuring focus is properly released when audio playback stops or reaches the end of a track.
+
+* **build:** Add build folder to fix imports and avoid publish ([7f92eba](https://github.com/doublesymmetry/react-native-track-player/commit/7f92eba9501a171e4e26022dcf2b124a0b9c9162))
+
 ## [5.0.0-alpha0](https://github.com/doublesymmetry/react-native-track-player/compare/v4.1.1...v5.0.0-alpha0) (2025-08-12)
 
 ### Features

@@ -7,6 +7,8 @@
 
 ----
 
+> **⚠️ Fork Notice:** This is a fork of [react-native-track-player](https://github.com/doublesymmetry/react-native-track-player) by [DoubleSymmetry](https://github.com/doublesymmetry). This fork contains modifications specific to our use case. For the original project, please visit the [official repository](https://github.com/doublesymmetry/react-native-track-player).
+
 A fully-fledged audio module created for music apps. Provides audio playback, external media controls, background mode and more!
 
 <div align="left" valign="middle">
